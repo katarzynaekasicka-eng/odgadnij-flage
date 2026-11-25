@@ -1,1 +1,35 @@
-const CACHE="odgadnij-flage-neon-portable-v5";const ASSETS=["./", "./index.html", "./neon.css", "./game.js", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./assets/ekran-startowy.webp", "./assets/flags/af.webp", "./assets/flags/al.svg", "./assets/flags/dz.svg", "./assets/flags/ad.webp", "./assets/flags/ao.svg", "./assets/flags/ag.svg", "./assets/flags/ar.svg", "./assets/flags/am.svg", "./assets/flags/au.svg", "./assets/flags/at.svg", "./assets/flags/az.svg", "./assets/flags/bs.svg", "./assets/flags/bh.svg", "./assets/flags/bd.svg", "./assets/flags/bb.svg", "./assets/flags/by.svg", "./assets/flags/be.svg", "./assets/flags/bz.webp", "./assets/flags/bj.svg", "./assets/flags/bt.webp", "./assets/flags/bo.webp", "./assets/flags/ba.svg", "./assets/flags/bw.svg", "./assets/flags/br.svg", "./assets/flags/bn.webp", "./assets/flags/bg.svg", "./assets/flags/bf.svg", "./assets/flags/bi.svg", "./assets/flags/cv.svg", "./assets/flags/kh.svg", "./assets/flags/cm.svg", "./assets/flags/ca.svg", "./assets/flags/cf.svg", "./assets/flags/td.svg", "./assets/flags/cl.svg", "./assets/flags/cn.svg", "./assets/flags/co.svg", "./assets/flags/km.svg", "./assets/flags/cg.svg", "./assets/flags/cd.svg", "./assets/flags/cr.webp", "./assets/flags/ci.svg", "./assets/flags/hr.webp", "./assets/flags/cu.svg", "./assets/flags/cy.webp", "./assets/flags/cz.svg", "./assets/flags/dk.svg", "./assets/flags/dj.svg", "./assets/flags/dm.svg", "./assets/flags/do.webp", "./assets/flags/ec.webp", "./assets/flags/eg.svg", "./assets/flags/sv.webp", "./assets/flags/gq.svg", "./assets/flags/er.svg", "./assets/flags/ee.svg", "./assets/flags/sz.svg", "./assets/flags/et.svg", "./assets/flags/fj.webp", "./assets/flags/fi.svg", "./assets/flags/fr.svg", "./assets/flags/ga.svg", "./assets/flags/gm.svg", "./assets/flags/ge.svg", "./assets/flags/de.svg", "./assets/flags/gh.svg", "./assets/flags/gr.svg", "./assets/flags/gd.svg", "./assets/flags/gt.webp", "./assets/flags/gn.svg", "./assets/flags/gw.svg", "./assets/flags/gy.svg", "./assets/flags/ht.webp", "./assets/flags/hn.svg", "./assets/flags/hu.svg", "./assets/flags/is.svg", "./assets/flags/in.svg", "./assets/flags/id.svg", "./assets/flags/ir.svg", "./assets/flags/iq.svg", "./assets/flags/ie.svg", "./assets/flags/il.svg", "./assets/flags/it.svg", "./assets/flags/jm.svg", "./assets/flags/jp.svg", "./assets/flags/jo.svg", "./assets/flags/kz.svg", "./assets/flags/ke.svg", "./assets/flags/ki.svg", "./assets/flags/kp.svg", "./assets/flags/kr.svg", "./assets/flags/kw.svg", "./assets/flags/kg.svg", "./assets/flags/la.svg", "./assets/flags/lv.svg", "./assets/flags/lb.svg", "./assets/flags/ls.svg", "./assets/flags/lr.svg", "./assets/flags/ly.svg", "./assets/flags/lt.svg", "./assets/flags/li.svg", "./assets/flags/lu.svg", "./assets/flags/mg.svg", "./assets/flags/mw.svg", "./assets/flags/my.svg", "./assets/flags/mv.svg", "./assets/flags/ml.svg", "./assets/flags/mt.svg", "./assets/flags/mh.svg", "./assets/flags/mr.svg", "./assets/flags/mu.svg", "./assets/flags/mx.webp", "./assets/flags/fm.svg", "./assets/flags/md.webp", "./assets/flags/mc.svg", "./assets/flags/mn.svg", "./assets/flags/me.webp", "./assets/flags/ma.svg", "./assets/flags/mz.svg", "./assets/flags/mm.svg", "./assets/flags/na.svg", "./assets/flags/nr.svg", "./assets/flags/np.svg", "./assets/flags/nl.svg", "./assets/flags/nz.svg", "./assets/flags/ni.webp", "./assets/flags/ne.svg", "./assets/flags/ng.svg", "./assets/flags/mk.svg", "./assets/flags/no.svg", "./assets/flags/om.webp", "./assets/flags/pk.svg", "./assets/flags/pw.svg", "./assets/flags/pa.svg", "./assets/flags/pg.svg", "./assets/flags/py.webp", "./assets/flags/pe.svg", "./assets/flags/ph.svg", "./assets/flags/pl.svg", "./assets/flags/pt.svg", "./assets/flags/qa.svg", "./assets/flags/ro.svg", "./assets/flags/ru.svg", "./assets/flags/rw.svg", "./assets/flags/kn.svg", "./assets/flags/lc.svg", "./assets/flags/vc.svg", "./assets/flags/ws.svg", "./assets/flags/sm.webp", "./assets/flags/st.svg", "./assets/flags/sa.webp", "./assets/flags/sn.svg", "./assets/flags/rs.webp", "./assets/flags/sc.svg", "./assets/flags/sl.svg", "./assets/flags/sg.svg", "./assets/flags/sk.svg", "./assets/flags/si.svg", "./assets/flags/sb.svg", "./assets/flags/so.svg", "./assets/flags/za.svg", "./assets/flags/ss.svg", "./assets/flags/es.webp", "./assets/flags/lk.svg", "./assets/flags/sd.svg", "./assets/flags/sr.svg", "./assets/flags/se.svg", "./assets/flags/ch.svg", "./assets/flags/sy.svg", "./assets/flags/tj.svg", "./assets/flags/tz.svg", "./assets/flags/th.svg", "./assets/flags/tl.svg", "./assets/flags/tg.svg", "./assets/flags/to.svg", "./assets/flags/tt.svg", "./assets/flags/tn.svg", "./assets/flags/tr.svg", "./assets/flags/tm.webp", "./assets/flags/tv.svg", "./assets/flags/ug.svg", "./assets/flags/ua.svg", "./assets/flags/ae.svg", "./assets/flags/gb.svg", "./assets/flags/us.svg", "./assets/flags/uy.svg", "./assets/flags/uz.svg", "./assets/flags/vu.svg", "./assets/flags/va.webp", "./assets/flags/ve.svg", "./assets/flags/vn.svg", "./assets/flags/ye.svg", "./assets/flags/zm.svg", "./assets/flags/zw.svg", "./assets/flags/ps.svg"];self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return;e.respondWith(caches.match(e.request).then(cached=>cached||fetch(e.request)))})
+'use strict';
+const BUILD = '20261125.2';
+const CACHE_PREFIX = 'flag-game-v2:' + self.registration.scope;
+const CACHE = CACHE_PREFIX + ':' + BUILD;
+const FILES = [
+  './', './index.html', './neon.css?v=' + BUILD,
+  './assets.js?v=' + BUILD, './flags.js?v=' + BUILD, './game.js?v=' + BUILD, './manifest.webmanifest'
+];
+self.addEventListener('install', event => {
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)).then(() => self.skipWaiting()));
+});
+self.addEventListener('activate', event => {
+  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key =>
+    (key.startsWith(CACHE_PREFIX) && key !== CACHE) || key.startsWith('odgadnij-flage-neon-')
+  ).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+});
+self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin || !url.href.startsWith(self.registration.scope)) return;
+  if (event.request.mode === 'navigate') {
+    // HTML always checks the server first, so an older installed copy can update.
+    event.respondWith(fetch(event.request).then(response => {
+      if (!response.ok) throw new Error('Navigation unavailable');
+      const copy = response.clone();
+      event.waitUntil(caches.open(CACHE).then(cache => cache.put(event.request, copy)));
+      return response;
+    }).catch(() => caches.open(CACHE).then(cache => cache.match('./index.html'))));
+    return;
+  }
+  event.respondWith(caches.open(CACHE).then(async cache => {
+    const cached = await cache.match(event.request);
+    return cached || fetch(event.request);
+  }));
+});
