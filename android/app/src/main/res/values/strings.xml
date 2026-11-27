@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Odgadnij Flagę</string>
+    <string name="close_title">Zamknąć grę?</string>
+    <string name="close_message">Możesz wrócić do gry, naciskając „Graj dalej”.</string>
+    <string name="keep_playing">Graj dalej</string>
+    <string name="close_game">Zamknij</string>
+    <string name="load_error">Nie udało się uruchomić gry.</string>
+    <string name="retry">Spróbuj ponownie</string>
+</resources>

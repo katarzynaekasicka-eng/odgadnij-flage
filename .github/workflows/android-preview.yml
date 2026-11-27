@@ -1,0 +1,52 @@
+name: Android — APK do testów i projekt Google Play
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'android/**'
+      - 'index.html'
+      - '.github/workflows/android-preview.yml'
+permissions:
+  contents: write
+concurrency:
+  group: android-preview
+  cancel-in-progress: false
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+      - name: Android SDK 36
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;35.0.0"'
+      - name: Build APK, unsigned AAB and lint
+        run: |
+          chmod +x android/gradlew
+          android/gradlew -p android :app:assembleDebug :app:bundleRelease :app:lintRelease --no-daemon
+      - name: Prepare downloads
+        run: |
+          mkdir -p dist
+          cp android/app/build/outputs/apk/debug/app-debug.apk dist/Odgadnij-Flage-test.apk
+          cp android/app/build/outputs/bundle/release/app-release.aab dist/Odgadnij-Flage-UNSIGNED.aab
+          python3 android/scripts/package_project.py dist/Android-Google-Play.zip
+          cp android/docs/GOOGLE-PLAY.md dist/INSTRUKCJA.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Odgadnij-Flage-Android
+          path: dist/
+          retention-days: 30
+      - name: Test downloads (not a Play Store publication)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "android-test-${{ github.run_number }}" \
+            --target "$GITHUB_SHA" --prerelease \
+            --title "Android — wersja testowa ${{ github.run_number }}" \
+            --notes "APK służy do testów na telefonie. AAB jest NIEPODPISANY i wymaga własnego klucza wydawcy przed wgraniem do Google Play. ZIP zawiera kompletny projekt Android Studio. Ta operacja nie publikuje aplikacji w sklepie." \
+            dist/Odgadnij-Flage-test.apk dist/Odgadnij-Flage-UNSIGNED.aab dist/Android-Google-Play.zip dist/INSTRUKCJA.md
