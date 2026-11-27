@@ -1,5 +1,5 @@
 'use strict';
-const BUILD = '20261125.2';
+const BUILD = '20261127.1';
 const CACHE_PREFIX = 'flag-game-v2:' + self.registration.scope;
 const CACHE = CACHE_PREFIX + ':' + BUILD;
 const FILES = [

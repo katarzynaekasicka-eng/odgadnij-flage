@@ -1,6 +1,6 @@
 'use strict';
 
-const BUILD = '20261125.2';
+const BUILD = '20261127.1';
 const COUNTRY_CODES = 'AF AL DZ AD AO AG AR AM AU AT AZ BS BH BD BB BY BE BZ BJ BT BO BA BW BR BN BG BF BI CV KH CM CA CF TD CL CN CO KM CG CD CR CI HR CU CY CZ DK DJ DM DO EC EG SV GQ ER EE SZ ET FJ FI FR GA GM GE DE GH GR GD GT GN GW GY HT HN HU IS IN ID IR IQ IE IL IT JM JP JO KZ KE KI KP KR KW KG LA LV LB LS LR LY LT LI LU MG MW MY MV ML MT MH MR MU MX FM MD MC MN ME MA MZ MM NA NR NP NL NZ NI NE NG MK NO OM PK PW PA PG PY PE PH PL PT QA RO RU RW KN LC VC WS SM ST SA SN RS SC SL SG SK SI SB SO ZA SS ES LK SD SR SE CH SY TJ TZ TH TL TG TO TT TN TR TM TV UG UA AE GB US UY UZ VU VA VE VN YE ZM ZW PS'.split(' ');
 const ROUND_MS = 20000;
 const $ = id => document.getElementById(id);
@@ -194,14 +194,10 @@ async function renderQuestion(retry = false) {
   game.question.options.forEach((code, index) => {
     const button = document.createElement('button');
     button.type = 'button'; button.className = 'choice'; button.disabled = true;
-    const badge = document.createElement('span'); badge.className = 'choice-flag';
-    const thumbnail = document.createElement('img'); thumbnail.alt = ''; thumbnail.src = assets.flags[code];
-    thumbnail.addEventListener('error', () => { thumbnail.hidden = true; }, { once: true });
-    badge.append(thumbnail);
     const label = document.createElement('span'); label.className = 'choice-label'; label.textContent = nameOf(code);
     const shortcut = document.createElement('span'); shortcut.className = 'choice-shortcut'; shortcut.textContent = index + 1;
     shortcut.setAttribute('aria-hidden', 'true');
-    button.append(badge, label, shortcut);
+    button.append(label, shortcut);
     button.addEventListener('click', () => { if (game.token === token) answer(index); });
     choices.append(button);
   });
@@ -260,7 +256,7 @@ function answer(index) {
     button.disabled = true;
     if (game.question.options[i] === game.question.code) {
       button.classList.add('correct');
-      button.querySelector('.choice-flag').replaceChildren(icon('check'));
+      button.prepend(icon('check'));
     } else if (i === index) button.classList.add('wrong');
   });
   $('progress').style.width = `${(game.index + 1) / game.order.length * 100}%`;
