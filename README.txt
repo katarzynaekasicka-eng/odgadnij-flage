@@ -1,13 +1,20 @@
-ODGADNIJ FLAGĘ — NEON
+ODGADNIJ FLAGĘ — NEON 2.1
 
-Uruchomienie: wgraj całą zawartość ZIP na hosting statyczny, np. Netlify.
-Lokalnie: python -m http.server 8000 i otwórz http://localhost:8000.
+Rozpakuj ZIP i otwórz index.html w przeglądarce.
+Ten jeden plik zawiera całą grę, wszystkie 195 flag i grafikę. Nie wymaga internetu.
 
-Zmieniono wygląd menu, quizu i nakładki odpowiedzi według przesłanej grafiki.
-Zachowano 195 państw, 20 sekund, 3 punkty, 3 życia, ranking lokalny i ustawienia.
-Flagi SVG i WebP dołączono do paczki (źródło: flagcdn.com); po pierwszym pełnym
-załadowaniu aplikacja działa offline. Zaktualizowano pamięć service workera.
-Ranking i ustawienia pozostają na urządzeniu.
+Hosting / GitHub Pages: wgraj index.html do katalogu głównego strony.
 
-Weryfikacja: poprawna/błędna odpowiedź, kolejne pytanie, reset, zamiana flagi,
-tryb offline i szerokości 320, 360, 390 oraz 768 px.
+Zasady: 20 sekund na pytanie, 3 życia, +3 punkty za poprawną odpowiedź,
+jedna zamiana flagi na grę. Wyniki zapisują się na urządzeniu.
+
+Źródła i wersja instalowana PWA:
+https://github.com/katarzynaekasicka-eng/odgadnij-flage
+
+Nowości w 2.1:
+- poprawiony biały pasek przy fladze (obraz dopasowany do własnych proporcji)
+- pasek czasu zmieniający kolor poniżej 5 s, wibracja i animacje (seria, błędna odpowiedź)
+- dzienne wyzwanie (te same flagi dla wszystkich) i seria dni
+- udostępnianie wyniku jako obrazek (Web Share API, awaryjnie schowek)
+- poprawiony font (brak polskich znaków w "Arial Rounded MT Bold")
+- cichsze przyciski pomocnicze, czytelniejszy podtytuł, ekran startowy z rekordem
