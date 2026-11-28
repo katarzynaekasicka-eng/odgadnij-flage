@@ -18,3 +18,9 @@ Nowości w 2.1:
 - udostępnianie wyniku jako obrazek (Web Share API, awaryjnie schowek)
 - poprawiony font (brak polskich znaków w "Arial Rounded MT Bold")
 - cichsze przyciski pomocnicze, czytelniejszy podtytuł, ekran startowy z rekordem
+
+
+AKTUALIZACJA IKONY
+Wgraj wszystkie pliki i katalog icons do katalogu głównego GitHub Pages.
+Ikona Google Play: icons/icon-512.png.
+Do publikacji aktualizacji w Google Play potrzebny jest podpisany AAB z dotychczasowego projektu Android/TWA, tym samym identyfikatorem pakietu i wyższym versionCode. Ten ZIP nie zawiera projektu Android ani klucza podpisu.

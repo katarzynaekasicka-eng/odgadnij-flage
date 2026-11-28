@@ -1,35 +1,5 @@
-'use strict';
-const BUILD = '20261127.1';
-const CACHE_PREFIX = 'flag-game-v2:' + self.registration.scope;
-const CACHE = CACHE_PREFIX + ':' + BUILD;
-const FILES = [
-  './', './index.html', './neon.css?v=' + BUILD,
-  './assets.js?v=' + BUILD, './flags.js?v=' + BUILD, './game.js?v=' + BUILD, './manifest.webmanifest'
-];
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)).then(() => self.skipWaiting()));
-});
-self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key =>
-    (key.startsWith(CACHE_PREFIX) && key !== CACHE) || key.startsWith('odgadnij-flage-neon-')
-  ).map(key => caches.delete(key)))).then(() => self.clients.claim()));
-});
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-  if (url.origin !== self.location.origin || !url.href.startsWith(self.registration.scope)) return;
-  if (event.request.mode === 'navigate') {
-    // HTML always checks the server first, so an older installed copy can update.
-    event.respondWith(fetch(event.request).then(response => {
-      if (!response.ok) throw new Error('Navigation unavailable');
-      const copy = response.clone();
-      event.waitUntil(caches.open(CACHE).then(cache => cache.put(event.request, copy)));
-      return response;
-    }).catch(() => caches.open(CACHE).then(cache => cache.match('./index.html'))));
-    return;
-  }
-  event.respondWith(caches.open(CACHE).then(async cache => {
-    const cached = await cache.match(event.request);
-    return cached || fetch(event.request);
-  }));
-});
+const CACHE="odgadnij-flage-icon-v22";
+const ASSETS=["./", "./index.html", "./manifest.json", "./icons/icon-48.png", "./icons/icon-72.png", "./icons/icon-96.png", "./icons/icon-144.png", "./icons/icon-180.png", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/maskable-512.png"];
+self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()));});
+self.addEventListener('activate',e=>{e.waitUntil(self.clients.claim());});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return; e.respondWith(fetch(e.request).catch(async()=>{const c=await caches.open(CACHE);return (await c.match(e.request))||(e.request.mode==='navigate'?await c.match('./index.html'):Response.error());}));});
